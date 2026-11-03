@@ -1,7 +1,15 @@
 import socket
 
-host= "127.0.0.1"
-ports= [22,80,443,631,3000]
+host = input("Enter the host to scan (press Enter for your own laptop): ")
+
+if host == "":
+    host = "127.0.0.1"
+port_text = input("Enter ports separated by commas (press Enter for the default list): ")
+
+if port_text == "":
+    ports = [22, 80, 443, 631, 3000]
+else:
+    ports = [int(p) for p in port_text.split(",")]
 
 for port in ports:
   s= socket.socket()
